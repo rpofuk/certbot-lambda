@@ -3,4 +3,4 @@
 
 set -e 
 
-yum install -y zip git vim vi
+dnf install -y zip git vi
