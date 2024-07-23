@@ -16,8 +16,13 @@ source "${VENV}/bin/activate"
 
 pip3 install -r requirements.txt
 
-pushd ${CERTBOT_SITE_PACKAGES}
-    zip -r -q ${SCRIPT_DIR}/certbot/${CERTBOT_ZIP_FILE} . -x "/*__pycache__/*"
-popd
 
-zip -g "certbot/${CERTBOT_ZIP_FILE}" main.py
+rm -rf python
+mkdir python
+cp -r ${VENV}/* python/
+
+ls -la python
+rm -rf ${SCRIPT_DIR}/certbot/${CERTBOT_ZIP_FILE}
+
+zip -r ${SCRIPT_DIR}/certbot/${CERTBOT_ZIP_FILE} python
+
